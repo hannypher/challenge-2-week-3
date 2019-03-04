@@ -1,26 +1,35 @@
 class BankAccount:
-    def __init__(self, account, amount, balance):
-        self.account = account
-        self.amount = amount
+    
+    def __init__(self, balance, account):
         self.balance = balance
+        self.account = account
 
-    def get_balance(self):
+
+    def open(self, account):
+        self.balance = 0
+        return self.account
+
+
+    def get_balance(self, account, balance):
+        self.balance = 0
         if (self.balance == 'closed'):
-            raise ValueError('ValueError')
+            raise ValueError('Account has been closed')
         return self.balance
 
-    def open(self):
-        self.balance = 0
 
     def deposit(self, amount):
         if(self.balance == 'closed' or amount < 0):
-            raise ValueError('ValueError')
+            raise ValueError('Account has been closed')
         self.balance += amount
+        return self.balance
+
         
     def withdraw(self, amount):
         if(self.balance == 'closed' or self.balance < amount or amount < 0):
-            raise ValueError('ValueError')
+            raise ValueError('Insufficient funds')
         self.balance -= amount
+        return self.balance
 
-    def close(self):
+
+    def close(self, account):
         self.balance = "closed"
