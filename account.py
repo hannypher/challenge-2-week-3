@@ -1,17 +1,14 @@
 class BankAccount:
-    
-    def __init__(self, balance, account):
-        self.balance = balance
-        self.account = account
-
-
-    def open(self, account):
+    def __init__(self):
+        #initialize global variable balance to be accessed by any method in this class
         self.balance = 0
-        return self.account
 
 
-    def get_balance(self, account, balance):
+    def open(self):
         self.balance = 0
+
+
+    def get_balance(self):
         if (self.balance == 'closed'):
             raise ValueError('Account has been closed')
         return self.balance
@@ -31,5 +28,6 @@ class BankAccount:
         return self.balance
 
 
-    def close(self, account):
+    def close(self):
         self.balance = "closed"
+        return self.balance
